@@ -2,8 +2,8 @@
 # Dockerfile - docker build script for a standard GlueX sim-recon 
 #              container image based on centos 7.
 #
-# author: richard.t.jones at uconn.edu
-# version: june 7, 2017
+# author: Mark Ito
+# version: May 29, 2018
 #
 # usage: [as root] $ docker build Dockerfile .
 #
