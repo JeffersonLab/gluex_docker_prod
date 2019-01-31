@@ -18,6 +18,6 @@ RUN ./gluex_prereqs_centos_7.sh
 RUN yum -y install which sqlite-devel bc xrootd-client-libs
 RUN ln -s cvmfs/oasis.opensciencegrid.org/gluex/group /group
 RUN mkdir /cvmfs
-RUN ln -s /cvmfs/oasis.opensciencegrid.org /cvmfs/oasis.opensciencegrid.org
+# RUN ln -s /cvmfs/oasis.opensciencegrid.org /cvmfs/oasis.opensciencegrid.org
 # make the cvmfs filesystem visible inside the container
 VOLUME /cvmfs/oasis.opensciencegrid.org
