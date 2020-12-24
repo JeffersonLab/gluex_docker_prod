@@ -17,6 +17,6 @@ RUN gluex_install-2.15/gluex_prereqs_centos_7.sh
 RUN mkdir /cvmfs
 RUN ln -s cvmfs/oasis.opensciencegrid.org/gluex/group /group
 RUN mkdir /u
-RUN ln -s cvmfs/oasis.opensciencegrid.org/gluex/group /u/group
+RUN ln -s ../cvmfs/oasis.opensciencegrid.org/gluex/group /u/group
 # make the cvmfs filesystem visible inside the container
 VOLUME /cvmfs/oasis.opensciencegrid.org
