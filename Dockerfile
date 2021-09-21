@@ -4,16 +4,17 @@
 #
 # original author: richard.t.jones at uconn.edu
 # author: marki at jlab.org
-# version: December 23, 2020
+# version: September 21, 2021
 #
 # usage: [as root] $ docker build Dockerfile .
 #
 
 FROM centos:centos7.7.1908
 
-ADD https://github.com/JeffersonLab/gluex_install/archive/2.25.tar.gz /
-RUN tar zxvf 2.25.tar.gz
-RUN gluex_install-2.25/gluex_prereqs_centos_7.sh
+ENV GXI_VERSION=2.26
+ADD https://github.com/JeffersonLab/gluex_install/archive/${GXI_VERSION}.tar.gz /
+RUN tar zxvf ${GXI_VERSION}.tar.gz
+RUN gluex_install-${GXI_VERSION}/gluex_prereqs_centos_7.sh
 RUN mkdir /cvmfs
 RUN ln -s cvmfs/oasis.opensciencegrid.org/gluex/group /group
 RUN mkdir /u
