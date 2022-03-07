@@ -4,14 +4,14 @@
 #
 # original author: richard.t.jones at uconn.edu
 # author: marki at jlab.org
-# version: September 21, 2021
+# version: March 7, 2022
 #
-# usage: [as root] $ docker build Dockerfile .
+# usage: [as root] $ docker build -t gluex_prod:gxi-2.30 .
 #
 
-FROM centos:centos7.7.1908
+FROM centos:7.9.2009
 
-ENV GXI_VERSION=2.26
+ENV GXI_VERSION=2.30
 ADD https://github.com/JeffersonLab/gluex_install/archive/${GXI_VERSION}.tar.gz /
 RUN tar zxvf ${GXI_VERSION}.tar.gz
 RUN gluex_install-${GXI_VERSION}/gluex_prereqs_centos_7.sh
