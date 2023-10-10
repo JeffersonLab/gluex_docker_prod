@@ -1,0 +1,27 @@
+#
+# Dockerfile - docker build script for a standard GlueX sim-recon 
+#              container image based on almalinux 9.
+#
+# original author: richard.t.jones at uconn.edu
+# author: aaustreg at jlab.org
+# version: October 10, 2023
+#
+# prereq: wget http://pki.jlab.org/JLabCA.crt
+# usage: [as root] $ docker build -f Dockerfile_almalinux_9 -t gluex_almalinux_9:latest . &> alma9_build.log
+#
+
+FROM almalinux:9.2
+
+COPY JLabCA.crt /etc/pki/ca-trust/source/anchors/JLabCA.crt
+RUN update-ca-trust
+
+ENV GXI_VERSION=2.32
+ADD https://github.com/JeffersonLab/gluex_install/archive/${GXI_VERSION}.tar.gz /
+RUN tar zxvf ${GXI_VERSION}.tar.gz
+RUN gluex_install-${GXI_VERSION}/gluex_prereqs_almalinux_9.sh
+RUN mkdir /cvmfs
+RUN ln -s cvmfs/oasis.opensciencegrid.org/gluex/group /group
+RUN mkdir /u
+RUN ln -s ../group /u/group
+# make the cvmfs filesystem visible inside the container
+VOLUME /cvmfs/oasis.opensciencegrid.org
