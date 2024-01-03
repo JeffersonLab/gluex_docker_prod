@@ -15,9 +15,10 @@ FROM almalinux:9.2
 COPY JLabCA.crt /etc/pki/ca-trust/source/anchors/JLabCA.crt
 RUN update-ca-trust
 
-ENV GXI_VERSION=2.32
+ENV GXI_VERSION=2.34
 ADD https://github.com/JeffersonLab/gluex_install/archive/${GXI_VERSION}.tar.gz /
 RUN tar zxvf ${GXI_VERSION}.tar.gz
+RUN ln -s gluex_install-${GXI_VERSION} gluex_install
 RUN gluex_install-${GXI_VERSION}/gluex_prereqs_almalinux_9.sh
 RUN mkdir /cvmfs
 RUN ln -s cvmfs/oasis.opensciencegrid.org/gluex/group /group
